@@ -9,6 +9,9 @@ addEventListener("fetch", (event) => {
   } else if (request.method === "GET") {
     // 如果是 GET 请求，则读取 JSON 数据
     return event.respondWith(ReadJSON(request));
+  } else if (request.method === "POST") {
+    // 如果是 POST 请求，则写入 JSON 数据
+    return event.respondWith(WriteJSON(request))
   } else {
     // 如果不是合法请求，则返回 405
     const errorResponse = new Response("{\"status\":405,\"msg\":\"Method Not Allowed\"}", {
