@@ -1,4 +1,4 @@
-name = "jsonbase"
+name = 'cardapi'
 type = "javascript"
 
 # 请修改成自己的 account_id
