@@ -11,4 +11,4 @@ compatibility_date = "2021-12-29"
 # 请修改成自己的 KV 数据库 ID
 [[kv_namespaces]]
 binding = "JSONBASE"
-id = "da895ae3dcb744ed924ad6c3ccf974b6"
+id = "6455d99d8ea94f2f88244d100fa89f6e"
