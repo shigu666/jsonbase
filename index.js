@@ -10,7 +10,7 @@ addEventListener("fetch", (event) => {
     // 如果是 GET 请求，则读取 JSON 数据
     return event.respondWith(ReadJSON(request));
   } else {
-    // 如果不是 GET 请求，则返回 405
+    // 如果不是合法请求，则返回 405
     const errorResponse = new Response("{\"status\":405,\"msg\":\"Method Not Allowed\"}", {
       status: 405,
       headers: { "Content-Type": "application/json" }
@@ -88,3 +88,17 @@ async function ReadJSON(request) {
   return handleCORS(successResponse);
 }
 
+/**
+ * 
+ * @param {*} request 请求体
+ * @returns 
+ */
+async function WriteJSON(request) {
+  const { pathname } = new URL(request.url);
+  const Body = await gatherResponse(request)
+  // 将 JSON 数据写入 KV 数据库
+  await JSONBASE.put(pathname, Body)
+  return new Response(JSON.stringify({ Body }), {
+    headers: { "Content-Type": "application/json" },
+  });
+}
